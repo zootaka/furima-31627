@@ -2,15 +2,16 @@
 
 ## users テーブル
 
-| Column         | Type   | Options     |
-| -------------- | ------ | ----------- |
-| last_name      | string | null: false |
-| first_name     | string | null: false |
-| password       | string | null: false |
-| last_name_kana | string | null: false |
-| first_name_kana| string | null: false |
-| nickname       | string | null: false |
-| birth_date     | date   | null: false |
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| last_name          | string | null: false |
+| first_name         | string | null: false |
+| encrypted_password | string | null: false |
+| email              | string | null: false |
+| last_name_kana     | string | null: false |
+| first_name_kana    | string | null: false |
+| nickname           | string | null: false |
+| birth_date         | date   | null: false |
 
 ### Association
 
@@ -25,7 +26,6 @@
 | name                          | string    | null: false                   |
 | user                          | references| null: false, foreign_key: true|
 | description                   | text      | null: false                   |
-| images_id (active_hash)       | integer   | null: false                   |
 | category_id (active_hash)     | integer   | null: false                   |
 | condition_id (active_hash)    | integer   | null: false                   |
 | postage_payer_id (active_hash)| integer   | null: false                   |
@@ -37,9 +37,8 @@
 ### Association
 
 - has_many :comments
-- has_many :images
-- has_one :purchases
-- belong_to :user
+- has_one :purchase
+- belongs_to :user
 
 ## purchases テーブル
 
@@ -47,20 +46,19 @@
 | ------------ | ---------- | ------------------------------ |
 | item         | references | null: false, foreign_key: true |
 | user         | references | null: false, foreign_key: true |
-| purchase_date| date       | null: false                    |
 
 ### Association
 
 - belongs_to :item
 - belongs_to :user
-- has_one :addresses
+- has_one :address
 
 ## addresses テーブル
 
 | Column                     | Type       | Options                        |
 | -------------------------- | ---------- | ------------------------------ |
 | post_code                  | string     | null: false                    |
-| prefecture_id (active_hash)| integer    | null: false, foreign_key: true |
+| prefecture_id (active_hash)| integer    | null: false,                   |
 | city                       | string     | null: false                    |
 | municipality               | string     | null: false                    |
 | building_name              | string     |                                |
@@ -70,7 +68,7 @@
 
 ### Association
 
-- belongs_to :purchases
+- belongs_to :purchase
 
 ## comments
 
