@@ -15,6 +15,7 @@ class Item < ApplicationRecord
     validates :prefecture_id
     validates :handling_time_id
     validates :price
+    validates :image
   end
 
   with_options numericality: { other_than: 1 } do
@@ -31,4 +32,5 @@ class Item < ApplicationRecord
   has_one :purchase
   belongs_to :user
   has_one_attached :image
+  
 end
