@@ -74,7 +74,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '販売価格が¥10,000,000以上は登録できない事' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price must be less than 10000000')
       end
@@ -88,31 +88,31 @@ RSpec.describe Item, type: :model do
       it 'category_idが1では登録できないこと' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
 
       it 'condition_idが1では登録できないこと' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition must be other than 1")
+        expect(@item.errors.full_messages).to include('Condition must be other than 1')
       end
 
       it 'handling_time_idが1では登録できないこと' do
         @item.handling_time_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Handling time must be other than 1")
+        expect(@item.errors.full_messages).to include('Handling time must be other than 1')
       end
 
       it 'postage_payer_idが1では登録できないこと' do
         @item.postage_payer_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Postage payer must be other than 1")
+        expect(@item.errors.full_messages).to include('Postage payer must be other than 1')
       end
 
       it 'prefecture_idが1では登録できないこと' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
+        expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
       end
     end
   end
