@@ -24,7 +24,8 @@ class Item < ApplicationRecord
     validates :prefecture_id
     validates :handling_time_id
   end
-
+  
+  validates :price, numericality: {greater_than: 300, less_than: 10000000}
 
   has_many :comments
   has_one :purchase
