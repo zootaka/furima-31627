@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   belongs_to :postage_payer
   belongs_to :prefecture
   belongs_to :handling_time
-  
+
   with_options presence: true do
     validates :name
     validates :description
@@ -25,12 +25,11 @@ class Item < ApplicationRecord
     validates :prefecture_id
     validates :handling_time_id
   end
-  
-  validates :price, numericality: {greater_than: 300, less_than: 10000000}
+
+  validates :price, numericality: { greater_than: 300, less_than: 10_000_000 }
 
   has_many :comments
   has_one :purchase
   belongs_to :user
   has_one_attached :image
-  
 end
