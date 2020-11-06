@@ -21,7 +21,7 @@
        <%= "¥#{@item.price}" %> 
       </span>
       <span class="item-postage">
-        <%= @item.postage_payer.name %>
+        <%= '配送料負担' %>
       </span>
     </div>
 
@@ -30,7 +30,8 @@
       <%= link_to '商品の編集', "#", method: :get, class: "item-red-btn" %>
       <p class='or-text'>or</p>
       <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
-    <% elsif user_signed_in? && current_user.id %>
+    
+    <% elsif user_signed_in? %>
     
       <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
     
