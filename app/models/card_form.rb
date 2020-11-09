@@ -4,7 +4,7 @@ class CardForm
 
   # ここにバリデーションの処理を書く
   with_options presence: true do
-    validates :prefecture_id
+    validates :prefecture_id, numericality: { other_than: 1 }
     validates :city
     validates :municipality
     validates :phone_number, numericality: { less_than_or_equal_to: 99_999_999_999 }
